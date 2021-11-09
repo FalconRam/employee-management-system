@@ -1,25 +1,15 @@
-import logo from './logo.svg';
-import './App.css';
+
+import {ListAllEmployee} from './components/viewEmployees/ListAllEmployee';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  // const history = useHistory();
+
+  // <Route exact path="/allemployees" component={Homepage1}></Route>;
+return (
+  <div className="container">
+    <ListAllEmployee />
+  </div>
+);
 }
 
 export default App;
