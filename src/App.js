@@ -3,7 +3,9 @@ import "./App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import FooterComp from "./components/footer/FooterComp";
 import HeaderComp from "./components/header/HeaderComp";
-import { ListAllEmployee } from "./components/viewEmployees/ListAllEmployee";
+import { ListAllEmployee } from "./components/curdEmployee/ListAllEmployee";
+import { CreateEmployee } from "./components/curdEmployee/CreateEmployee";
+import { UpdateEmployee } from "./components/curdEmployee/UpdateEmployee";
 
 function App() {
   return (
@@ -12,17 +14,22 @@ function App() {
         <HeaderComp />
         <div className="container">
           <Routes>
-            <Route path="/" element={<ListAllEmployee />}></Route>
-            <Route path="/employees" element={<ListAllEmployee />}></Route>
-            {/* <Route
-              path="/add-employee/:id"
-              component={CreateEmployeet}
+            <Route path="/" exact element={<ListAllEmployee />}></Route>
+            <Route
+              path="/view-all-employees"
+              exact
+              element={<ListAllEmployee />}
             ></Route>
             <Route
-              path="/view-employee/:id"
-              component={ViewEmployee}
-            ></Route> */}
-            {/* <Route path = "/update-employee/:id" component = {UpdateEmployeeComponent}></Route> */}
+              path="/create-employees"
+              exact
+              element={<CreateEmployee />}
+            ></Route>
+            <Route
+              path="/update-employee/:id"
+              exact
+              element={<UpdateEmployee />}
+            ></Route>{" "}
           </Routes>
         </div>
         <FooterComp />
