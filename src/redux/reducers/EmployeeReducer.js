@@ -6,13 +6,13 @@ const initState = {
   progress: false,
   error: "",
   employees: [],
-  uref: {},
+  // uref: {},
 };
 
 const ERROR = "ERROR";
 const ERROR_STATUS = "ERROR_STATUS";
 const MSG_STATUS = "MSG_STATUS";
-const PROGRESS_ACTION_TYPE = "PROGRESS_ACTION_TYPE";
+// const PROGRESS_ACTION_TYPE = "PROGRESS_ACTION_TYPE";
 const GET_ALL_Employees = "GET_ALL_Employees";
 const EMPLOYEE_UPDATE_RENDER_ACTION_TYPE = "EMPLOYEE_UPDATE_RENDER_ACTION_TYPE";
 
@@ -43,29 +43,29 @@ export const createEmployee = (payload) => {
   };
 };
 
-export const updateEmployee = (payload) => {
-  return async (dispatch) => {
-    const url = `http://localhost:8080/api/v1/employees/${payload.id}`;
-    axios.post(url, payload);
-    updateRenderAction({});
-    // making the uref empty again.
-    updateRenderAction({});
+// export const updateEmployee = (payload) => {
+//   return async (dispatch) => {
+//     const url = `http://localhost:8080/api/v1/employees/${payload.id}`;
+//     axios.post(url, payload);
+//     updateRenderAction({});
+//     // making the uref empty again.
+//     updateRenderAction({});
 
-    // update the ui. TODO
-    dispatch({ type: PROGRESS_ACTION_TYPE, payload: true });
+//     // update the ui. TODO
+//     dispatch({ type: PROGRESS_ACTION_TYPE, payload: true });
 
-    // after 5 second PROGRESS :: FALSE AGAIN
-    setTimeout(() => {
-      dispatch({ type: PROGRESS_ACTION_TYPE, payload: false });
-    }, 5000);
-  };
-};
+//     // after 5 second PROGRESS :: FALSE AGAIN
+//     setTimeout(() => {
+//       dispatch({ type: PROGRESS_ACTION_TYPE, payload: false });
+//     }, 5000);
+//   };
+// };
 
-export const updateRenderAction = (payload) => {
-  // ONLY UPDATEING THE UI
-  // 5
-  return { type: EMPLOYEE_UPDATE_RENDER_ACTION_TYPE, payload: payload };
-};
+// export const updateRenderAction = (payload) => {
+//   // ONLY UPDATEING THE UI
+//   // 5
+//   return { type: EMPLOYEE_UPDATE_RENDER_ACTION_TYPE, payload: payload };
+// };
 
 
 export const deleteEmployeeById = (payload) => {
@@ -81,6 +81,17 @@ export const deleteEmployeeById = (payload) => {
   };
 };
 
+export const getEmpDetails = async (id) => {
+   const url = "http://localhost:8080/api/v1/employees";
+  id = id || "";
+  return await axios.get(`${url}/${id}`);
+};
+
+export const editEmpDetails = async (id, empParam) => {
+  const url = 'http://localhost:8080/api/v1/employees';
+  return await axios.put(`${url}/${id}`, empParam);
+};
+
 export function EmployeeReducer(state = initState, action) {
   switch (action.type) {
     case GET_ALL_Employees:
@@ -91,8 +102,8 @@ export function EmployeeReducer(state = initState, action) {
       return { ...state, error: action.payload };
     case ERROR_STATUS:
       return { ...state, errorStatus: action.payload };
-    case EMPLOYEE_UPDATE_RENDER_ACTION_TYPE:
-      return { ...state, uref: action.payload };
+    // case EMPLOYEE_UPDATE_RENDER_ACTION_TYPE:
+    //   return { ...state, uref: action.payload };
     default:
       return state;
   }
