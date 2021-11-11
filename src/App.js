@@ -26,10 +26,10 @@ function App() {
               element={<CreateEmployee />}
             ></Route>
             <Route
-              path="/update-employee/:id"
+              path="/update-employees/:id"
               exact
               element={<UpdateEmployee />}
-            ></Route>{" "}
+            ></Route>
           </Routes>
         </div>
         <FooterComp />

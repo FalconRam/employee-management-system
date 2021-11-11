@@ -1,7 +1,10 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { deleteEmployeeById, getAllEmployees } from "../../redux/reducers/EmployeeReducer";
+import {
+  deleteEmployeeById,
+  getAllEmployees,
+} from "../../redux/reducers/EmployeeReducer";
 
 export const ListAllEmployee = () => {
   const dispatch = useDispatch();
@@ -16,7 +19,9 @@ export const ListAllEmployee = () => {
     navigate("/create-employees");
   };
 
-  const editEmployee = (e) => {};
+  const editEmployee = (id) => {
+    navigate(`/update-employees/${id}`);
+  };
 
   const removeEmployee = (e) => {
     console.log(e.target.value);
@@ -25,6 +30,7 @@ export const ListAllEmployee = () => {
   };
 
   const state = useSelector((state) => state);
+  console.log(state);
   console.log(state.employee.employees);
 
   return (
