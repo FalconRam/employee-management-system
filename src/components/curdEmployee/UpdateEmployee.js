@@ -171,7 +171,7 @@ export const UpdateEmployee = () => {
   const { firstName, lastName, emailId } = empParam;
   const { id } = useParams();
   const classes = useStyles();
-  let navigate = useNavigate();
+  // let navigate = useNavigate();
 
   useEffect(() => {
     loadEmpDetails();
@@ -187,8 +187,9 @@ export const UpdateEmployee = () => {
   };
 
   const onValueChange = (e) => {
-    console.log(e.target.value);
-    setEmpDetails({ ...empParam, [e.target.firstName]: e.target.value });
+    console.log(empParam);
+    setEmpDetails({ ...empParam, [e.target.name]: e.target.value });
+    console.log(empParam);
   };
 
   return (
@@ -198,8 +199,8 @@ export const UpdateEmployee = () => {
         <InputLabel htmlFor="my-input">First Name</InputLabel>
         <Input
           onChange={(e) => onValueChange(e)}
-          name="fisrt Name"
-          value={firstName}
+          name="firstName"
+          value={empParam.firstName}
           id="my-input"
           aria-describedby="my-helper-text"
         />
@@ -208,8 +209,8 @@ export const UpdateEmployee = () => {
         <InputLabel htmlFor="my-input">Last Name</InputLabel>
         <Input
           onChange={(e) => onValueChange(e)}
-          name="last Name"
-          value={lastName}
+          name="lastName"
+          value={empParam.lastName}
           id="my-input"
           aria-describedby="my-helper-text"
         />
@@ -218,8 +219,8 @@ export const UpdateEmployee = () => {
         <InputLabel htmlFor="my-input">Email Id</InputLabel>
         <Input
           onChange={(e) => onValueChange(e)}
-          name="email Id"
-          value={emailId}
+          name="emailId"
+          value={empParam.emailId}
           id="my-input"
           aria-describedby="my-helper-text"
         />
